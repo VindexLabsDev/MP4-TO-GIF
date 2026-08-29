@@ -109,7 +109,7 @@ Requiere Windows y Python 3.10 o posterior:
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-El script crea `.venv`, instala versiones reproducibles y genera `output/MP4-to-GIF.exe`.
+El script crea `.venv`, instala versiones reproducibles y genera `dist/MP4-to-GIF.exe`. La carpeta `dist` es local y no se versiona; publica el ejecutable en GitHub Releases.
 
 ### Solución de problemas
 
@@ -229,7 +229,7 @@ Windows and Python 3.10 or newer are required:
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-The script creates `.venv`, installs reproducible dependency versions, and writes `output/MP4-to-GIF.exe`.
+The script creates `.venv`, installs reproducible dependency versions, and writes `dist/MP4-to-GIF.exe`. The `dist` directory is local and is not versioned; publish the executable through GitHub Releases.
 
 ### Troubleshooting
 

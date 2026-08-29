@@ -6,5 +6,3 @@ __pycache__/
 build/
 dist/
 .test-*/
-output/*.exe
-!output/.gitkeep
