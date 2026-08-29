@@ -119,9 +119,9 @@ El script crea `.venv`, instala versiones reproducibles y genera `output/MP4-to-
 
 El código se publica bajo la [Licencia MIT](LICENSE). Puede usarse, modificarse y distribuirse, incluso comercialmente, conservando el aviso de copyright y la licencia.
 
-La licencia del código no concede derechos sobre la marca. **Vindex**, su nombre y su logo pertenecen a Vindex Labs. Los proyectos derivados no pueden usar estos elementos para presentarse como productos oficiales, afiliados o respaldados por Vindex sin autorización previa.
+La licencia del código no concede derechos sobre la marca. **Vindex** es el nombre de fantasía de **Vindex Labs SpA**. El nombre y el logo de Vindex pertenecen a Vindex Labs SpA. Los proyectos derivados no pueden usarlos para presentarse como productos oficiales, afiliados o respaldados por Vindex sin autorización previa.
 
-Vindex puede ofrecer otros productos propietarios o pagados, además de soporte, personalizaciones y servicios comerciales basados en este proyecto open source.
+Vindex Labs SpA puede ofrecer otros productos propietarios o pagados, además de soporte, personalizaciones y servicios comerciales basados en este proyecto open source.
 
 ---
 
@@ -235,6 +235,6 @@ The script creates `.venv`, installs reproducible dependency versions, and write
 
 The code is released under the [MIT License](LICENSE). It may be used, modified, and distributed, including commercially, provided that the copyright notice and license are retained.
 
-The code license does not grant trademark rights. **Vindex**, its name, and its logo belong to Vindex Labs. Derivative projects may not use them to present themselves as official, affiliated with, or endorsed by Vindex without prior permission.
+The code license does not grant trademark rights. **Vindex** is the trade name of **Vindex Labs SpA**. The Vindex name and logo belong to Vindex Labs SpA. Derivative projects may not use them to present themselves as official, affiliated with, or endorsed by Vindex without prior permission.
 
-Vindex may offer separate proprietary or paid products, as well as support, customization, and commercial services based on this open-source project.
+Vindex Labs SpA may offer separate proprietary or paid products, as well as support, customization, and commercial services based on this open-source project.
