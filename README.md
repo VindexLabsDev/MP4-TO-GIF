@@ -11,9 +11,13 @@ Conversor sencillo de MP4 a GIF con interfaz para Windows y modo de línea de co
 
 ## Español
 
+### Descargar el ejecutable
+
+La versión portable para Windows se publica en [GitHub Releases](https://github.com/VindexLabsDev/MP4-TO-GIF/releases/latest). Descarga `MP4-to-GIF.exe` desde los archivos adjuntos de la versión más reciente. No necesitas instalar Python.
+
 ### Inicio rápido
 
-1. Abre `output/MP4-to-GIF.exe`.
+1. Descarga y abre `MP4-to-GIF.exe` desde GitHub Releases.
 2. Pulsa **Seleccionar archivo** y elige un video `.mp4`.
 3. Opcionalmente, pulsa **Agregar logo PNG**.
 4. Opcionalmente, elige la salida, FPS, escala, inicio, fin y tamaño del logo.
@@ -127,9 +131,13 @@ Vindex Labs SpA puede ofrecer otros productos propietarios o pagados, además de
 
 ## English
 
+### Download the executable
+
+The portable Windows build is published on [GitHub Releases](https://github.com/VindexLabsDev/MP4-TO-GIF/releases/latest). Download `MP4-to-GIF.exe` from the latest release assets. Python does not need to be installed.
+
 ### Quick start
 
-1. Open `output/MP4-to-GIF.exe`.
+1. Download and open `MP4-to-GIF.exe` from GitHub Releases.
 2. Click **Seleccionar archivo** and choose an `.mp4` video.
 3. Optionally click **Agregar logo PNG**.
 4. Optionally choose the output, FPS, scale, start, end, and logo size.
