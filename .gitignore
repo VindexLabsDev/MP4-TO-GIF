@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.spec
+.pyinstaller-build*/
+build/
+dist/
+.test-*/
+output/*.exe
+!output/.gitkeep
