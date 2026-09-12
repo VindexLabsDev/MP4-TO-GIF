@@ -1,8 +1,8 @@
-# MP4 to GIF
+# MP4 to GIF / WebP
 
-A small MP4-to-GIF converter with a Windows interface and a command-line mode. By default, it preserves the source video's frame rate and can place a PNG logo in the top-right corner.
+A streaming MP4-to-GIF/WebP converter with a bilingual Windows interface and a command-line mode. GIF uses up to 15 FPS; WebP defaults to 30 FPS in the interface.
 
-Conversor sencillo de MP4 a GIF con interfaz para Windows y modo de línea de comandos. De forma predeterminada, conserva los FPS del video original y permite colocar un logo PNG en la esquina superior derecha.
+Conversor por streaming de MP4 a GIF o WebP animado con interfaz bilingüe para Windows y modo de línea de comandos. GIF usa hasta 15 FPS; WebP inicia en 30 FPS en la interfaz.
 
 - [Español](#español)
 - [English](#english)
@@ -18,26 +18,27 @@ La versión portable para Windows se publica en [GitHub Releases](https://github
 ### Inicio rápido
 
 1. Descarga y abre `MP4-to-GIF.exe` desde GitHub Releases.
-2. Pulsa **Seleccionar archivo** y elige un video `.mp4`.
-3. Opcionalmente, pulsa **Agregar logo PNG**.
+2. Pulsa **Seleccionar** y elige un video `.mp4`.
+3. Opcionalmente, selecciona una marca de agua PNG.
 4. Opcionalmente, elige la salida, FPS, escala, inicio, fin y tamaño del logo.
-5. Pulsa **Convertir a GIF**.
-6. Cuando la barra llegue al 100%, pulsa **Ver archivo**.
+5. Elige **GIF** o **WebP** y pulsa **Exportar**.
+6. Cuando la barra llegue al 100%, pulsa **Mostrar en carpeta**.
 
-El GIF se guarda junto al MP4 y usa el mismo nombre. Por ejemplo, `video.mp4` genera `video.gif`.
+La animación se guarda junto al MP4 y usa el mismo nombre. Por ejemplo, `video.mp4` genera `video.gif` o `video.webp`.
 
 ### Interfaz gráfica
 
 | Opción | Valor predeterminado | Descripción |
 |---|---:|---|
 | Archivo | — | Solo acepta archivos MP4. |
-| Salida | Junto al MP4 | Permite elegir el nombre y la carpeta del GIF. |
+| Salida | Junto al MP4 | El nombre se edita por separado y el selector pide solo la carpeta. |
 | Logo | Sin logo | PNG opcional, colocado arriba a la derecha. |
-| FPS | Originales | Conserva la tasa de fotogramas del MP4. También admite un valor escrito manualmente. |
+| FPS | GIF: 15; WebP: 30 | GIF ofrece 10/15 FPS. WebP ofrece FPS originales, 10, 15, 24, 30 y 60. |
 | Escala | Original | Cambia las dimensiones; por ejemplo, `0.5` reduce ancho y alto a la mitad. |
 | Inicio / Fin | Video completo | Recorta el intervalo usando segundos. |
 | Tamaño del logo | 20% | Ancho del logo respecto al ancho del video. |
-| Barra de progreso | 0–100% | Muestra lectura, creación de paleta, conversión y guardado. |
+| Barra de progreso | 0–100% | Muestra avance, actividad y tiempo estimado. |
+| Idioma | Español | Permite cambiar la interfaz entre español e inglés. |
 
 ### Línea de comandos
 
@@ -58,6 +59,12 @@ Elegir el GIF de salida:
 
 ```powershell
 python converter.py video.mp4 --output resultado.gif
+```
+
+Crear un WebP animado sin pérdida de color:
+
+```powershell
+python converter.py video.mp4 --format webp
 ```
 
 Cambiar FPS:
@@ -84,7 +91,8 @@ python converter.py video.mp4 --start 2.5 --end 8 --resize 0.5 --fps 15 --logo m
 |---|---|---|
 | `input` | Archivo `.mp4` existente | Obligatorio en la CLI. Sin argumentos se abre la interfaz. |
 | `-o`, `--output` | Ruta válida | Si se omite, usa el nombre y carpeta del MP4. Crea carpetas intermedias. |
-| `--fps` | Mayor que 0 y hasta 120 | Si se omite, conserva los FPS originales. Más FPS aumentan tiempo, memoria y tamaño. |
+| `--format` | `gif`, `webp` | Formato de salida; WebP se guarda sin pérdida. |
+| `--fps` | Mayor que 0 y hasta 120 | Si se omite, usa los FPS originales. GIF limita la salida a 15 FPS para respetar el timing. |
 | `--resize` | Mayor que 0 y hasta 4 | `0.5` reduce a la mitad; `2` duplica las dimensiones. |
 | `--start` | Segundos | Inicio opcional del recorte. |
 | `--end` | Segundos | Final opcional; debe ser posterior al inicio y estar dentro del video. |
@@ -97,8 +105,9 @@ Las opciones se pueden combinar libremente. `--start` y `--end` se aplican antes
 
 - GIF no contiene audio; el audio del MP4 se descarta.
 - GIF admite un máximo de 256 colores. El programa usa una paleta compartida para evitar que el logo cambie entre fotogramas.
-- Conservar todos los FPS puede producir archivos grandes y conversiones lentas.
-- La conversión mantiene los fotogramas en memoria. Para videos largos, recorta, reduce FPS o usa `--resize`.
+- WebP sin pérdida conserva el color RGB y normalmente ofrece mejor fidelidad que GIF.
+- GIF se limita a 15 FPS para mantener una reproducción estable y puede omitir fotogramas.
+- GIF y WebP se procesan por streaming con FFmpeg; el uso de RAM no crece con la duración del video.
 - Si el GIF de destino ya existe, se reemplaza únicamente después de completar correctamente la conversión.
 
 ### Compilar para Windows
@@ -113,7 +122,7 @@ El script crea `.venv`, instala versiones reproducibles y genera `dist/MP4-to-GI
 
 ### Solución de problemas
 
-- **La conversión consume mucha memoria:** recorta el video, reduce sus dimensiones o baja los FPS.
+- **La conversión tarda demasiado:** reduce las dimensiones o recorta el intervalo.
 - **El GIF pesa demasiado:** combina `--resize 0.5` con menos FPS.
 - **El logo se ve pequeño:** aumenta **Tamaño del logo (%)** o usa `--logo-size`.
 - **No aparece el icono actualizado:** actualiza la vista del Explorador; Windows puede conservar iconos antiguos en caché.
@@ -138,26 +147,27 @@ The portable Windows build is published on [GitHub Releases](https://github.com/
 ### Quick start
 
 1. Download and open `MP4-to-GIF.exe` from GitHub Releases.
-2. Click **Seleccionar archivo** and choose an `.mp4` video.
-3. Optionally click **Agregar logo PNG**.
+2. Click **Browse** and choose an `.mp4` video.
+3. Optionally select a PNG watermark.
 4. Optionally choose the output, FPS, scale, start, end, and logo size.
-5. Click **Convertir a GIF**.
-6. When progress reaches 100%, click **Ver archivo**.
+5. Choose **GIF** or **WebP**, then click **Export**.
+6. When progress reaches 100%, click **Show in folder**.
 
-The GIF is saved next to the MP4 with the same base name. For example, `video.mp4` creates `video.gif`.
+The animation is saved next to the MP4 with the same base name. For example, `video.mp4` creates `video.gif` or `video.webp`.
 
 ### Graphical interface
 
 | Setting | Default | Description |
 |---|---:|---|
 | File | — | Accepts MP4 files only. |
-| Output | Next to the MP4 | Lets you choose the GIF name and directory. |
+| Output | Next to the MP4 | The name is edited separately; the folder picker selects only a directory. |
 | Logo | No logo | Optional PNG placed in the top-right corner. |
-| FPS | Original | Preserves the MP4 frame rate. A custom value can also be entered. |
+| FPS | GIF: 15; WebP: 30 | GIF offers 10/15 FPS. WebP offers original, 10, 15, 24, 30, and 60 FPS. |
 | Scale | Original | Changes dimensions; for example, `0.5` halves width and height. |
 | Start / End | Full video | Trims the time range in seconds. |
 | Logo size | 20% | Logo width relative to the video width. |
-| Progress bar | 0–100% | Tracks frame reading, palette creation, conversion, and saving. |
+| Progress bar | 0–100% | Shows progress, activity, and estimated time. |
+| Language | Spanish | Switches the interface between Spanish and English. |
 
 ### Command line
 
@@ -178,6 +188,12 @@ Choose the output file:
 
 ```powershell
 python converter.py video.mp4 --output result.gif
+```
+
+Create a lossless animated WebP:
+
+```powershell
+python converter.py video.mp4 --format webp
 ```
 
 Change FPS:
@@ -204,7 +220,8 @@ python converter.py video.mp4 --start 2.5 --end 8 --resize 0.5 --fps 15 --logo b
 |---|---|---|
 | `input` | Existing `.mp4` file | Required in CLI mode. Running without arguments opens the GUI. |
 | `-o`, `--output` | Valid path | Defaults to the MP4 name and directory. Missing parent directories are created. |
-| `--fps` | Greater than 0, up to 120 | Defaults to source FPS. Higher values increase time, memory use, and file size. |
+| `--format` | `gif`, `webp` | Output format; WebP is saved losslessly. |
+| `--fps` | Greater than 0, up to 120 | Defaults to source FPS. GIF output is limited to 15 FPS to preserve timing. |
 | `--resize` | Greater than 0, up to 4 | `0.5` halves dimensions; `2` doubles them. |
 | `--start` | Seconds | Optional trim start. |
 | `--end` | Seconds | Optional trim end; it must follow the start and remain inside the video. |
@@ -217,8 +234,9 @@ Options may be freely combined. Trimming is applied before resizing, logo placem
 
 - GIF has no audio; MP4 audio is discarded.
 - GIF supports at most 256 colors. The converter uses one shared palette to keep the logo stable between frames.
-- Preserving every frame can create large files and slow conversions.
-- Frames are kept in memory while converting. For long videos, trim, lower FPS, or use `--resize`.
+- Lossless WebP preserves RGB color and usually offers better fidelity than GIF.
+- GIF is limited to 15 FPS for stable playback and may skip frames.
+- GIF and WebP are streamed through FFmpeg, so RAM use does not grow with video duration.
 - If the destination GIF exists, it is replaced only after a successful conversion.
 
 ### Build for Windows
@@ -233,7 +251,7 @@ The script creates `.venv`, installs reproducible dependency versions, and write
 
 ### Troubleshooting
 
-- **Conversion uses too much memory:** trim the video, reduce its dimensions, or lower FPS.
+- **Conversion takes too long:** reduce the dimensions or trim the time range.
 - **The GIF is too large:** combine `--resize 0.5` with a lower FPS value.
 - **The logo is too small:** increase **Tamaño del logo (%)** or use `--logo-size`.
 - **The updated icon does not appear:** refresh Windows Explorer; Windows may cache old icons.
